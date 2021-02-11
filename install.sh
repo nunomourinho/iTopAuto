@@ -1,6 +1,6 @@
 ITOP_VERSION=2.7.3
 ITOP_FILENAME=iTop-2.7.3-6624.zip
-
+export DEBIAN_FRONTEND=noninteractive
 apt update
 apt upgrade -y -f
 apt install mc screen git -f -y
@@ -36,8 +36,8 @@ echo "Nova password para o utilizador root de mysql: $passwordMysql"
 bash mysql_passwd "$passwordMysql"
 
 echo "Nova password para o utilizador root de mysql: $passwordMysql"
-apt install phpmyadmin -y
-echo "Nova password para o utilizador root de mysql: $passwordMysql"
+apt install phpmyadmin -yq
+echo "Nova password para o utilizador root de mysql: $passwordMysql" | tee password.txt
 
 #bash ./create_mysql_admin
 

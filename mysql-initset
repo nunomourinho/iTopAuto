@@ -11,7 +11,7 @@ key=$1
 val=$2
 scope=${3:-apache2}
 
-filepath="/etc/mysql/my.cnf"
+filepath="/etc/mysql/conf.d/mysqldump.cnf"
 
 if [ -f $filepath ]
 then
@@ -37,3 +37,6 @@ then
 else
     echo "$path does not exist"
 fi
+
+service mysql reload
+service mysql restart
