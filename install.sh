@@ -20,6 +20,7 @@ service apache2 restart
 ./php-iniset post_max_size 2G
 ./php-iniset memory_limit 2G
 ./php-iniset max_input_time 3600
+./mysql-initset max_allowed_packet 1073742324
 update-alternatives --set php /usr/bin/php7.3
 
 
@@ -30,11 +31,14 @@ unzip -o /tmp/itop/itop.zip -d /tmp/itop/
 mv /tmp/itop/web/* /var/www/html 
 rm -rf /tmp/itop
 chown -R www-data:www-data /var/www/html
-passwordMysql=`pwgen -1 -n 14`
-echo "Nova password para o utilizador root de mysql: "$passwordMysql
-bash mysql_passwd $passwordMysql
+passwordMysql=`pwgen -1 -y -n 14`
+echo "Nova password para o utilizador root de mysql: $passwordMysql"
+bash mysql_passwd "$passwordMysql"
 
+echo "Nova password para o utilizador root de mysql: $passwordMysql"
 apt install phpmyadmin -y
+echo "Nova password para o utilizador root de mysql: $passwordMysql"
+
 #bash ./create_mysql_admin
 
 
