@@ -9,7 +9,7 @@ apt install mysql-server -y -f
 apt install php php-mysql php-ldap php-mcrypt php-cli php-soap php-json graphviz -y -f
 apt install php-xml php-gd php-zip libapache2-mod-php -y -f
 apt install php-dev libmcrypt-dev gcc make autoconf libc-dev pkg-config -f -y
-apt install pwgen graphviz curl unzip php-mysql php-soap php-ldap php-mbstring expect -f -y
+apt install pwgen graphviz curl unzip php-mysql php-soap php-ldap php-mbstring expect net-tools -f -y
 printf "\n" | pecl install mcrypt-1.0.4
 printf "\n" | pecl upgrade-all
 echo "extension=mcrypt.so" | tee -a /etc/php/7.4/apache2/conf.d/mcrypt.ini
