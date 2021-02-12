@@ -20,7 +20,7 @@ service apache2 restart
 ./php-iniset post_max_size 2G
 ./php-iniset memory_limit 2G
 ./php-iniset max_input_time 3600
-echo "max_allowed_packet      = 1G" >> /etc/mysql/mysql.conf.d/mysqld.cnf
+echo "max_allowed_packet      = 1096M" >> /etc/mysql/mysql.conf.d/mysqld.cnf
 update-alternatives --set php /usr/bin/php7.3
 
 
@@ -31,7 +31,7 @@ unzip -o /tmp/itop/itop.zip -d /tmp/itop/
 mv /tmp/itop/web/* /var/www/html 
 rm -rf /tmp/itop
 chown -R www-data:www-data /var/www/html
-passwordMysql=`pwgen -1 -y -n 14`
+passwordMysql=`pwgen -1 17 -s  -y -r \'\"`
 echo "Nova password para o utilizador root de mysql: $passwordMysql"
 bash mysql_passwd "$passwordMysql"
 
